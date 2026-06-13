@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayebare Samuel — IT & Network Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#e10600;--red2:#ff2a00;--blue:#0070f3;--green:#10b981;--purple:#8b5cf6;
+  --glow:rgba(225,6,0,0.3);--bg:#060608;
+  --t1:#ffffff;--t2:#a0a0b0;--t3:#505060;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t2);overflow-x:hidden;line-height:1.6}
+.cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(225,6,0,0.06) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:background 0.5s}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.6}
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12;animation:drift 18s ease-in-out infinite}
+.aurora-blob:nth-child(1){width:600px;height:600px;background:#e10600;top:-200px;left:-100px;animation-delay:0s}
+.aurora-blob:nth-child(2){width:500px;height:500px;background:#0070f3;top:30%;right:-150px;animation-delay:-6s}
+.aurora-blob:nth-child(3){width:400px;height:400px;background:#8b5cf6;bottom:-100px;left:30%;animation-delay:-12s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-20px,40px) scale(0.95)}}
+
+/* NAV */
+.navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;display:flex;align-items:center;gap:24px;padding:8px 8px 8px 20px;border-radius:60px;background:rgba(10,10,16,0.75);backdrop-filter:blur(32px) saturate(200%);border:1px solid rgba(255,255,255,0.12);box-shadow:0 8px 40px rgba(0,0,0,0.5),0 1px 0 rgba(255,255,255,0.06) inset}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;color:var(--t1);white-space:nowrap}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:0;list-style:none;position:relative;padding:4px;border-radius:60px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08)}
+.nav-links::before{content:'';position:absolute;top:4px;left:4px;height:calc(100% - 8px);width:var(--pw,56px);border-radius:60px;background:linear-gradient(135deg,rgba(255,255,255,0.24),rgba(255,255,255,0.1));box-shadow:0 0 0 0.5px rgba(255,255,255,0.3) inset,0 2px 8px rgba(0,0,0,0.3);backdrop-filter:blur(8px);transition:transform 0.38s cubic-bezier(0.34,1.56,0.64,1),width 0.38s cubic-bezier(0.34,1.56,0.64,1);transform:translateX(var(--po,0px));pointer-events:none;z-index:0}
+.nav-links li{position:relative;z-index:1}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.78rem;font-weight:500;padding:0.42rem 1rem;border-radius:60px;display:block;white-space:nowrap;transition:color 0.2s;user-select:none}
+.nav-links a:hover{color:rgba(255,255,255,0.85)}
+.nav-links a.active{color:#fff;font-weight:600}
+.nav-cta{padding:0.48rem 1.2rem;border-radius:60px;background:var(--red);color:#fff;font-size:0.78rem;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 0 16px rgba(225,6,0,0.4);transition:all 0.2s;border:none;cursor:pointer}
+.nav-cta:hover{background:var(--red2);transform:translateY(-1px);box-shadow:0 4px 20px rgba(225,6,0,0.5)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 6% 4rem;gap:5rem;flex-wrap:wrap;justify-content:space-between;position:relative;z-index:1}
+.hero-content{flex:1;min-width:280px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--red);border-radius:2px}
+.eyebrow-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.6)}}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(3.2rem,8vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-0.04em;margin-bottom:1.2rem}
+.hero h1 .name{display:block;background:linear-gradient(135deg,#fff 30%,rgba(255,255,255,0.6));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .highlight{display:block;background:linear-gradient(135deg,#e10600,#ff6b35,#ff2a00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 20px rgba(225,6,0,0.3))}
+.hero-roles{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem}
+.role-chip{font-size:0.8rem;font-weight:500;padding:5px 14px;border-radius:20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--t2);backdrop-filter:blur(8px)}
+.role-sep{color:var(--t3);font-size:0.7rem}
+.hero-desc{font-size:1.05rem;line-height:1.8;color:var(--t2);max-width:480px;margin-bottom:2.5rem}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn-red{display:inline-flex;align-items:center;gap:8px;padding:0.8rem 1.8rem;border-radius:60px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-weight:600;font-size:0.88rem;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,6,0,0.35);transition:all 0.25s}
+.btn-red:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(225,6,0,0.5)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:0.8rem 1.8rem;border-radius:60px;background:rgba(255,255,255,0.05);color:var(--t1);font-weight:500;font-size:0.88rem;text-decoration:none;border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(12px);transition:all 0.25s}
+.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);transform:translateY(-3px)}
+.hero-stats{display:flex;gap:3rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06)}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:800;color:var(--t1);letter-spacing:-0.04em;line-height:1;margin-bottom:4px}
+.stat-num span{color:var(--red)}
+.stat-lbl{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);font-weight:500}
+
+/* Top-right fade image (larger, below navbar) */
+.hero-fade-image{
+  position:fixed;
+  top:96px;
+  right:5%;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--red);
+  box-shadow:0 0 40px rgba(225,6,0,0.6);
+  transition:opacity 0.1s linear;
+  z-index:100;
+  opacity:1;
+  background:var(--bg);
+}
+.hero-fade-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+@media(max-width:900px){
+  .hero-fade-image{width:140px;height:140px;top:84px;right:4%}
+}
+@media(max-width:600px){
+  .hero-fade-image{width:100px;height:100px;top:76px;right:4%}
+}
+
+/* SECTIONS (unchanged) */
+section{padding:6rem 6%;position:relative;z-index:1}
+.max{max-width:1100px;margin:0 auto}
+.s-label{display:inline-flex;align-items:center;gap:10px;font-size:0.72rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.s-label::before{content:'';display:block;width:20px;height:1.5px;background:var(--red);border-radius:2px}
+.s-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--t1);letter-spacing:-0.03em;line-height:1.15;margin-bottom:12px}
+.s-sub{font-size:0.95rem;color:var(--t2);max-width:500px;margin-bottom:3.5rem;line-height:1.7}
+.hr{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);margin:0 6%}
+
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:3rem;align-items:start}
+.about-text p{margin-bottom:1.1rem;line-height:1.85;font-size:0.95rem}
+.about-text strong{color:var(--t1);font-weight:600}
+.info-grid{display:flex;flex-direction:column;gap:10px}
+.info-card{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);transition:all 0.3s}
+.info-card:hover{border-color:rgba(225,6,0,0.3);background:rgba(225,6,0,0.04);transform:translateX(6px)}
+.ic-icon{width:36px;height:36px;border-radius:10px;flex-shrink:0;background:rgba(225,6,0,0.1);border:1px solid rgba(225,6,0,0.15);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:0.85rem}
+.ic-lbl{font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--t3);margin-bottom:2px}
+.ic-val{font-size:0.85rem;color:var(--t1)}
+
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill-card{padding:1.6rem 1.4rem;border-radius:20px;background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.07);opacity:0;transform:translateY(24px);transition:opacity 0.5s,transform 0.5s,border-color 0.3s,box-shadow 0.3s}
+.skill-card.vis{opacity:1;transform:translateY(0)}
+.skill-card:hover{border-color:rgba(225,6,0,0.25);box-shadow:0 0 0 1px rgba(225,6,0,0.08),0 16px 48px rgba(0,0,0,0.3);transform:translateY(-6px)!important}
+.sk-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
+.sk-title{font-weight:700;color:var(--t1);margin-bottom:0.6rem;font-size:0.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{font-size:0.68rem;font-weight:500;padding:3px 10px;border-radius:20px;background:rgba(225,6,0,0.1);color:#ff8080;border:1px solid rgba(225,6,0,0.15)}
+
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project-card{border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,0.07);background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));opacity:0;transform:translateY(24px);transition:opacity 0.5s,transform 0.5s,border-color 0.3s,box-shadow 0.3s}
+.project-card.vis{opacity:1;transform:translateY(0)}
+.project-card:hover{border-color:rgba(225,6,0,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.4);transform:translateY(-8px)!important}
+.project-top{height:3px;background:linear-gradient(90deg,var(--red),var(--blue),var(--purple))}
+.project-body{padding:1.5rem 1.4rem}
+.p-num{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
+.p-title{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t1);margin-bottom:5px}
+.p-tech{font-size:0.72rem;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:10px}
+.p-desc{font-size:0.85rem;color:var(--t2);line-height:1.7}
+
+.edu-timeline{display:flex;flex-direction:column;gap:20px;position:relative;max-width:720px}
+.edu-timeline::before{content:'';position:absolute;left:19px;top:28px;bottom:28px;width:2px;background:linear-gradient(180deg,var(--red),var(--blue),var(--purple));border-radius:2px}
+.edu-card{display:grid;grid-template-columns:56px 1fr;gap:20px;opacity:0;transform:translateX(-20px);transition:opacity 0.5s,transform 0.5s}
+.edu-card.vis{opacity:1;transform:translateX(0)}
+.edu-dot{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:rgba(225,6,0,0.12);border:2px solid rgba(225,6,0,0.35);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:0.9rem;margin-top:4px;position:relative;z-index:1}
+.edu-content{padding:1.4rem 1.6rem;border-radius:18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);transition:border-color 0.3s,box-shadow 0.3s}
+.edu-content:hover{border-color:rgba(225,6,0,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.edu-year{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.edu-degree{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;color:var(--t1);margin-bottom:4px}
+.edu-school{font-size:0.85rem;color:var(--blue);font-weight:500;margin-bottom:8px}
+.edu-desc{font-size:0.85rem;color:var(--t2);line-height:1.7}
+.edu-badge{display:inline-block;margin-top:10px;font-size:0.7rem;font-weight:600;padding:3px 12px;border-radius:20px;background:rgba(16,185,129,0.1);color:#6ee7b7;border:1px solid rgba(16,185,129,0.2)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-intro p{font-size:0.95rem;line-height:1.8;color:var(--t2);margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:10px}
+.contact-link{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:var(--t2);text-decoration:none;opacity:0;transform:translateX(-16px);transition:opacity 0.5s,transform 0.5s,border-color 0.3s,color 0.3s,box-shadow 0.3s}
+.contact-link.vis{opacity:1;transform:translateX(0)}
+.contact-link:hover{border-color:rgba(225,6,0,0.3);color:var(--t1);transform:translateX(6px)!important;box-shadow:0 0 20px rgba(225,6,0,0.1)}
+.cl-icon{width:36px;height:36px;border-radius:10px;flex-shrink:0;background:rgba(225,6,0,0.1);border:1px solid rgba(225,6,0,0.15);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:0.85rem}
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.f-label{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);margin-bottom:5px;display:block}
+.f-input{width:100%;padding:12px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;color:var(--t1);font-family:'Inter',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s;resize:vertical}
+.f-input:focus{border-color:rgba(225,6,0,0.4);box-shadow:0 0 0 3px rgba(225,6,0,0.08)}
+
+footer{position:relative;z-index:1;padding:2.5rem 6%;border-top:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-copy{font-size:0.8rem;color:var(--t3)}
+.f-copy strong{color:var(--t2);font-weight:500}
+.f-links{display:flex;gap:20px}
+.f-links a{font-size:0.78rem;color:var(--t3);text-decoration:none;transition:color 0.2s}
+.f-links a:hover{color:var(--red)}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .skills-grid,.projects-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .navbar{top:10px;padding:6px 6px 6px 14px;gap:10px;width:calc(100% - 32px)}
+  .nav-links{display:none}
+  section{padding:4rem 5%}
+  .hero{padding:6rem 5% 3rem}
+  .skills-grid,.projects-grid{grid-template-columns:1fr}
+  .hero-stats{gap:2rem}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="cursor-glow" id="cg"></div>
+<canvas id="particles"></canvas>
+<div class="aurora">
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+  <div class="aurora-blob"></div>
+</div>
+
+<nav class="navbar">
+  <div class="logo">AS<span>.</span></div>
+  <ul class="nav-links" id="nl">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire me</a>
+</nav>
+
+<section id="home" class="hero">
+  <!-- Only the top-right fade image remains -->
+  <div class="hero-fade-image" id="fadeImage">
+    <img src="sam.jpeg" alt="Ayebare Samuel">
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow"><div class="eyebrow-dot"></div>Available for opportunities</div>
+    <h1><span class="name">Ayebare</span><span class="highlight">Samuel</span></h1>
+    <div class="hero-roles">
+      <span class="role-chip">Network Engineer</span><span class="role-sep">·</span>
+      <span class="role-chip">IT Consultant</span><span class="role-sep">·</span>
+      <span class="role-chip">Developer</span>
+    </div>
+    <p class="hero-desc">I design secure, scalable networks and build automation tools. First-year IT student at UCU turning complex infrastructure problems into clean, working solutions.</p>
+    <div class="btn-row">
+      <a href="#contact" class="btn-red">Get in touch <i class="fas fa-arrow-right"></i></a>
+      <a href="#projects" class="btn-ghost">View projects <i class="fas fa-code"></i></a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">10<span>+</span></div><div class="stat-lbl">IT Projects</div></div>
+      <div><div class="stat-num">8<span>+</span></div><div class="stat-lbl">Events & certs</div></div>
+      <div><div class="stat-num">100<span>%</span></div><div class="stat-lbl">Commitment</div></div>
+    </div>
+  </div>
+  <!-- The rotating ring (hero-visual) has been removed -->
+</section>
+
+<div class="hr"></div>
+
+<section id="about">
+  <div class="max">
+    <div class="reveal"><div class="s-label">About me</div><h2 class="s-title">IT Consultant &amp; Network Engineer</h2></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a first-year <strong>Information Technology student at Uganda Christian University</strong>, Mukono. I help businesses build secure, efficient networks and automate repetitive IT tasks, delivering solutions for campus-wide routing, switch hardening, and real-time monitoring.</p>
+        <p>Beyond networking, I develop backend systems with <strong>Node.js and Express</strong>, manage cloud infrastructure on <strong>Azure</strong>, and use containerisation with <strong>Docker</strong> for reproducible environments. I'm also proficient in Linux server administration and configuration management.</p>
+        <p>I recently attended <strong>AgentCon at UCU</strong> — an AI event covering ethical cybersecurity, autonomous agents, Azure SQL, and design thinking with AI. I'm always learning, always building.</p>
+      </div>
+      <div class="info-grid reveal">
+        <div class="info-card"><div class="ic-icon"><i class="fas fa-graduation-cap"></i></div><div><div class="ic-lbl">University</div><div class="ic-val">Uganda Christian University</div></div></div>
+        <div class="info-card"><div class="ic-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="ic-lbl">Location</div><div class="ic-val">Kampala, Uganda (remote worldwide)</div></div></div>
+        <div class="info-card"><div class="ic-icon"><i class="fas fa-book"></i></div><div><div class="ic-lbl">Program</div><div class="ic-val">BSc Information Technology · Year 1</div></div></div>
+        <div class="info-card"><div class="ic-icon"><i class="fas fa-certificate"></i></div><div><div class="ic-lbl">Events & Certs</div><div class="ic-val">Cisco IT Essentials · AgentCon AI 2026</div></div></div>
+        <div class="info-card"><div class="ic-icon"><i class="fas fa-briefcase"></i></div><div><div class="ic-lbl">Status</div><div class="ic-val">Open for contracts &amp; internships</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="skills">
+  <div class="max">
+    <div class="reveal"><div class="s-label">Expertise</div><h2 class="s-title">Tools &amp; technologies</h2><p class="s-sub">A full-stack IT skill set covering networks, servers, cloud, security and development.</p></div>
+    <div class="skills-grid">
+      <div class="skill-card"><span class="sk-icon">🌐</span><div class="sk-title">Networking</div><div class="tags"><span class="tag">Cisco IOS</span><span class="tag">VLANs/Trunking</span><span class="tag">OSPF/EIGRP</span><span class="tag">Switch hardening</span><span class="tag">ACLs</span><span class="tag">DHCP</span></div></div>
+      <div class="skill-card"><span class="sk-icon">🐧</span><div class="sk-title">Linux &amp; Servers</div><div class="tags"><span class="tag">Ubuntu</span><span class="tag">CentOS</span><span class="tag">Apache/Nginx</span><span class="tag">Samba</span><span class="tag">SSH</span></div></div>
+      <div class="skill-card"><span class="sk-icon">☁️</span><div class="sk-title">Cloud &amp; Automation</div><div class="tags"><span class="tag">Azure VMs &amp; SQL</span><span class="tag">AWS basics</span><span class="tag">Docker</span><span class="tag">Ansible</span></div></div>
+      <div class="skill-card"><span class="sk-icon">🛡️</span><div class="sk-title">Security</div><div class="tags"><span class="tag">Firewall rules</span><span class="tag">IDS/IPS basics</span><span class="tag">SSH hardening</span><span class="tag">Wireshark</span></div></div>
+      <div class="skill-card"><span class="sk-icon">👨‍💻</span><div class="sk-title">Development</div><div class="tags"><span class="tag">JavaScript/Node.js</span><span class="tag">Python</span><span class="tag">REST APIs</span><span class="tag">Express</span><span class="tag">MySQL</span></div></div>
+      <div class="skill-card"><span class="sk-icon">📊</span><div class="sk-title">Monitoring &amp; Tools</div><div class="tags"><span class="tag">Zabbix</span><span class="tag">Wireshark</span><span class="tag">Git/GitHub</span><span class="tag">Packet Tracer</span><span class="tag">Draw.io</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="projects">
+  <div class="max">
+    <div class="reveal"><div class="s-label">Portfolio</div><h2 class="s-title">Recent IT projects</h2><p class="s-sub">Real-world infrastructure, automation, and development work.</p></div>
+    <div class="projects-grid">
+      <div class="project-card"><div class="project-top"></div><div class="project-body"><div class="p-num">Project 01</div><div class="p-title">Multi-Rack Campus Network</div><div class="p-tech">Cisco · VLANs · OSPF · DHCP</div><p class="p-desc">Designed and deployed a Hub-and-Spoke WAN connecting 8 branch routers with OSPF Area 0, inter-VLAN routing, and DHCP pools. Reduced broadcast traffic by 60%.</p></div></div>
+      <div class="project-card"><div class="project-top"></div><div class="project-body"><div class="p-num">Project 02</div><div class="p-title">Switch Hardening &amp; SSH</div><div class="p-tech">Cisco 2960 · SSH · VLANs · PortFast</div><p class="p-desc">Hardened a factory-reset switch — disabled Telnet, enabled SSH with 2048-bit RSA, and isolated traffic across STUDENTS, CCTV, VoIP, ADMIN, and MANAGEMENT VLANs.</p></div></div>
+      <div class="project-card"><div class="project-top"></div><div class="project-body"><div class="p-num">Project 03</div><div class="p-title">Network Monitoring Dashboard</div><div class="p-tech">Zabbix · Grafana · SNMP</div><p class="p-desc">Real-time monitoring solution tracking bandwidth, device health, and anomalies. Deployed to a small business with automated alerting.</p></div></div>
+      <div class="project-card"><div class="project-top"></div><div class="project-body"><div class="p-num">Project 04</div><div class="p-title">JWT Auth REST API</div><div class="p-tech">Node.js · Express · bcrypt · MySQL</div><p class="p-desc">Secured REST API with JWT middleware. Features user registration with bcrypt hashing, login, protected routes, and full CRUD operations on an advice database.</p></div></div>
+      <div class="project-card"><div class="project-top"></div><div class="project-body"><div class="p-num">Project 05</div><div class="p-title">Automated Backup Script</div><div class="p-tech">Bash · Cron · rsync</div><p class="p-desc">Linux shell script that encrypts and ships critical server data to offsite storage on a cron schedule. Reduced manual backup time to zero.</p></div></div>
+      <div class="project-card"><div class="project-top"></div><div class="project-body"><div class="p-num">Project 06</div><div class="p-title">IT Asset Tracker</div><div class="p-tech">Node.js · Express · MySQL</div><p class="p-desc">Full-stack asset tracking system for a local NGO managing hardware inventory, warranties, and maintenance schedules with dashboard and reporting.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="education">
+  <div class="max">
+    <div class="reveal"><div class="s-label">Education</div><h2 class="s-title">Academic background</h2><p class="s-sub">My formal journey in computing and technology.</p></div>
+    <div class="edu-timeline">
+      <div class="edu-card">
+        <div class="edu-dot"><i class="fas fa-graduation-cap"></i></div>
+        <div class="edu-content"><div class="edu-year">2025 — Present</div><div class="edu-degree">BSc Information Technology</div><div class="edu-school">Uganda Christian University — Mukono</div><p class="edu-desc">Studying Local Area Networking, Database Design, Software Engineering, and AI. Completing hands-on labs in switch configuration, VLAN segmentation, full-stack development, and statistics.</p><span class="edu-badge">Currently enrolled · Year 1</span></div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-dot"><i class="fas fa-school"></i></div>
+        <div class="edu-content"><div class="edu-year">Completed 2024</div><div class="edu-degree">Uganda Advanced Certificate of Education (UACE)</div><div class="edu-school">Makerere College School — Kampala</div><p class="edu-desc">Sciences and mathematics focus. Built the analytical foundation for further study in Information Technology.</p><span class="edu-badge">Completed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<section id="contact">
+  <div class="max">
+    <div class="reveal"><div class="s-label">Connect</div><h2 class="s-title">Let's work together</h2></div>
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p class="reveal">I'm open to internships, freelance IT consulting, network audits, and automation projects. Whether you have a question or an opportunity — feel free to reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:ayebare.samuel010@gmail.com" class="contact-link"><div class="cl-icon"><i class="fas fa-envelope"></i></div><span>ayebare.samuel010@gmail.com</span></a>
+          <a href="tel:+256752233132" class="contact-link"><div class="cl-icon"><i class="fas fa-phone"></i></div><span>+256 752 233 132</span></a>
+          <a href="https://www.linkedin.com/in/ayebare-samuel-98a5b3416" target="_blank" class="contact-link"><div class="cl-icon"><i class="fab fa-linkedin"></i></div><span>LinkedIn — Ayebare Samuel</span></a>
+          <a href="https://github.com/anslemsam010-beep" target="_blank" class="contact-link"><div class="cl-icon"><i class="fab fa-github"></i></div><span>GitHub — @anslemsam010-beep</span></a>
+          <a href="#" class="contact-link"><div class="cl-icon"><i class="fas fa-map-marker-alt"></i></div><span>Kampala, Uganda (remote worldwide)</span></a>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+        <div><label class="f-label">Your name</label><input type="text" class="f-input" placeholder="John Doe" required></div>
+        <div><label class="f-label">Email address</label><input type="email" class="f-input" placeholder="you@example.com" required></div>
+        <div><label class="f-label">Message</label><textarea rows="4" class="f-input" placeholder="Describe your project or needs..." required></textarea></div>
+        <button type="submit" class="btn-red" style="border:none;cursor:pointer;width:fit-content">Send message <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-copy">© 2026 <strong>Ayebare Samuel</strong> — IT &amp; Network Engineering</div>
+  <div class="f-links">
+    <a href="#home">Top ↑</a>
+    <a href="https://github.com/anslemsam010-beep" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/ayebare-samuel-98a5b3416" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+// Cursor glow
+const cg=document.getElementById('cg');
+document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px'});
+
+// Liquid glass pill navigation
+const nl=document.getElementById('nl');
+const nas=nl.querySelectorAll('a');
+function pill(a){const nr=nl.getBoundingClientRect(),ar=a.getBoundingClientRect();nl.style.setProperty('--po',(ar.left-nr.left-4)+'px');nl.style.setProperty('--pw',ar.width+'px')}
+nas.forEach(a=>a.addEventListener('click',()=>{nas.forEach(l=>l.classList.remove('active'));a.classList.add('active');pill(a)}));
+
+const secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  nas.forEach(a=>{const on=a.getAttribute('href')==='#'+cur;a.classList.toggle('active',on);if(on)pill(a)});
+},{passive:true});
+setTimeout(()=>{const a=nl.querySelector('.active');if(a)pill(a)},250);
+
+// Scroll reveal
+const revs=document.querySelectorAll('.reveal,.skill-card,.project-card,.edu-card,.contact-link');
+function rev(){revs.forEach((el,i)=>{if(el.getBoundingClientRect().top<window.innerHeight-80)setTimeout(()=>el.classList.add('vis'),i%4*50)})}
+window.addEventListener('scroll',rev,{passive:true});rev();
+
+// Dynamic color
+const root=document.documentElement,body=document.body;
+function lerp(a,b,t){return Math.round(a+(b-a)*t)}
+window.addEventListener('scroll',()=>{
+  const p=Math.min(1,window.scrollY/(document.body.scrollHeight-window.innerHeight)||0);
+  const ac=[{r:225,g:6,b:0},{r:0,g:112,b:243},{r:139,g:92,b:246}];
+  const t=p<0.5?p*2:(p-0.5)*2,a=p<0.5?ac[0]:ac[1],b2=p<0.5?ac[1]:ac[2];
+  root.style.setProperty('--red',`rgb(${lerp(a.r,b2.r,t)},${lerp(a.g,b2.g,t)},${lerp(a.b,b2.b,t)})`);
+  root.style.setProperty('--glow',`rgba(${lerp(a.r,b2.r,t)},${lerp(a.g,b2.g,t)},${lerp(a.b,b2.b,t)},0.3)`);
+  const bg=[{r:12,g:4,b:4},{r:4,g:8,b:20},{r:4,g:12,b:10}];
+  const bg1=p<0.5?bg[0]:bg[1],bg2=p<0.5?bg[1]:bg[2];
+  body.style.background=`rgb(${lerp(bg1.r,bg2.r,t)},${lerp(bg1.g,bg2.g,t)},${lerp(bg1.b,bg2.b,t)})`;
+},{passive:true});
+
+// Fade out top-right image on scroll
+const fadeImg = document.getElementById('fadeImage');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const maxScroll = 350;
+  let opacity = Math.max(0, 1 - (scrollY / maxScroll));
+  fadeImg.style.opacity = opacity;
+});
+
+// Contact form
+function handleSubmit(e){
+  e.preventDefault();const btn=e.target.querySelector('button');
+  btn.innerHTML='Sent! <i class="fas fa-check"></i>';btn.style.background='#10b981';
+  setTimeout(()=>{btn.innerHTML='Send message <i class="fas fa-paper-plane"></i>';btn.style.background='';e.target.reset()},3000)
+}
+
+// Particles
+const cv=document.getElementById('particles'),ctx=cv.getContext('2d');
+let W,H,pts=[];
+function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;pts=Array.from({length:90},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+0.5,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.2,o:Math.random()*.35+.05}))}
+function draw(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${p.o})`;ctx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0});requestAnimationFrame(draw)}
+window.addEventListener('resize',resize);resize();draw();
+</script>
+</body>
+</html>
